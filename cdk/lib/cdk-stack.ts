@@ -52,5 +52,14 @@ export class CdkStack extends cdk.Stack {
     const thumbnailResoruce = apiGatewayRestApi.root.addResource("thumbnail");
     const lambdaIntegration = new apigateway.LambdaIntegration(lambdaFunctions);
     thumbnailResoruce.addMethod("GET", lambdaIntegration);
+
+    // const apiKey = apiGatewayRestApi.addApiKey(`${props.projectName}-api-key`, {
+    //   apiKeyName: `${props.projectName}-api-key`,
+    // });
+    // const usagePlan = apiGatewayRestApi.addUsagePlan(`${props.projectName}-usage-plan`, {
+    //   name: `${props.projectName}-usage-plan`,
+    // });
+    // usagePlan.addApiKey(apiKey);
+    // usagePlan.addApiStage({ stage: apiGatewayRestApi.deploymentStage });
   }
 }
