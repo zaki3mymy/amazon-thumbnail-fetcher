@@ -1,7 +1,7 @@
 [project]
 name = "amazon-thumbnail-fetcher"
 version = "0.1.0"
-description = "Add your description here"
+description = "Get the first thumbnail image of Amazon's search result."
 authors = [
     { name = "zaki3mymy", email = "zaki.last@gmail.com" }
 ]
