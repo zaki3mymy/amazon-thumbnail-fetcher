@@ -36,5 +36,10 @@ cdk deploy --profile <your profile>
 
 Specify the search word for Amazon with a query parameter `keyword`.
 ```
-curl https://<API Gateway ID>.execute-api.ap-northeast-1.amazonaws.com/v1/thumbnail?keyword=bar | base64 -d > image.jpg
+curl -H "Accept: image/jpg" https://<API Gateway ID>.execute-api.ap-northeast-1.amazonaws.com/v1/thumbnail?keyword=bar > image.jpg
+```
+
+If you want to get the URL of the thumbnail image, specify `url` in the` type` parameter.
+```
+curl "https://<API Gateway ID>.execute-api.ap-northeast-1.amazonaws.com/v1/thumbnail?keyword=bar&type=url"
 ```

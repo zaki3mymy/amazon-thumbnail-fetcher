@@ -88,6 +88,20 @@ def lambda_function(event, context):
             "isBase64Encoded": False,
         }
 
+    type_ = query.get("type")
+    if type_ and type_.lower() not in ["raw", "url"]:
+        # Only "raw" or "url"
+        return {
+            "statusCode": 400,
+            "headers": {
+                "Content-Type": "text/plain",
+            },
+            "body": 'Type is allowed only for "raw" or "url".',
+            "isBase64Encoded": False,
+        }
+    elif not type_:
+        type_ = "raw"
+
     keyword = query["keyword"]
     logger.info(f"keyword: {keyword}")
 
@@ -95,6 +109,16 @@ def lambda_function(event, context):
 
     url = parse_image_url(html)
     logger.info(f"image url: {url}")
+
+    if type_ == "url":
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Content-Type": "text/plain",
+            },
+            "body": url,
+            "isBase64Encoded": False,
+        }
 
     content = fetch_image(url)
 
